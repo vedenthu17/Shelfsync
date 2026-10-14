@@ -1,0 +1,162 @@
+/** @type {import('tailwindcss').Config} */
+
+// The "reading room" theme: parchment, warm ink, the bottle green of a desk
+// lamp and a brass accent, seen through frosted glass (see .glass in index.css). The neutral and status scales below replace
+// Tailwind's defaults under their usual names (slate, red, amber, emerald,
+// violet), so every component picks the palette up without naming it.
+export default {
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['"IBM Plex Sans"', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+        serif: ['Fraunces', '"Iowan Old Style"', 'Georgia', 'serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'Consolas', 'monospace'],
+      },
+      colors: {
+        // Paper rather than pure white, so cards sit on the canvas instead of glaring off it.
+        white: '#fffdf8',
+        canvas: '#f3eee3',
+        brand: {
+          50: '#edf5f2',
+          100: '#d6e7e0',
+          200: '#aed0c3',
+          300: '#7db2a0',
+          400: '#4f9280',
+          500: '#327666',
+          600: '#245e52',
+          700: '#1c4b42',
+          800: '#173c36',
+          900: '#12302c',
+          950: '#0b211f',
+        },
+        brass: {
+          50: '#faf5e9',
+          100: '#f1e5c6',
+          200: '#e4cd92',
+          300: '#d4b05e',
+          400: '#c39a3f',
+          500: '#a98030',
+          600: '#8a6626',
+          700: '#6e5122',
+        },
+        // Stamp-pad blue: the "informational" status colour, kept apart from the brand green.
+        ink: {
+          50: '#eef2f8',
+          100: '#dbe4f1',
+          200: '#b9c9e2',
+          300: '#8fa8cf',
+          400: '#6485b6',
+          500: '#48699c',
+          600: '#39547f',
+          700: '#2f4467',
+          800: '#273853',
+        },
+        slate: {
+          50: '#f8f5ee',
+          100: '#f0ebe0',
+          200: '#e3dccd',
+          300: '#cfc6b3',
+          // 400 is the lightest grey still used for text, so it is kept dark enough to read on glass.
+          400: '#766e5f',
+          500: '#665e51',
+          600: '#575044',
+          700: '#423c33',
+          800: '#2e2a24',
+          900: '#1f1c17',
+          950: '#14120e',
+        },
+        red: {
+          50: '#fbf1ee',
+          100: '#f6ddd7',
+          200: '#edbbb0',
+          300: '#e09384',
+          400: '#d06b59',
+          500: '#bf4a3a',
+          600: '#a83a2c',
+          700: '#8c2f24',
+          800: '#73281f',
+          900: '#5e231d',
+        },
+        amber: {
+          50: '#fbf5e6',
+          100: '#f5e8c4',
+          200: '#ecd391',
+          300: '#e0b95a',
+          400: '#d3a035',
+          500: '#bd8620',
+          600: '#9c6b17',
+          700: '#7d5415',
+          800: '#664416',
+          900: '#543915',
+        },
+        emerald: {
+          50: '#eff6ec',
+          100: '#dbebd4',
+          200: '#b9d8ad',
+          300: '#8fbf7f',
+          400: '#67a356',
+          500: '#4a873b',
+          600: '#3a6d2e',
+          700: '#305726',
+          800: '#284622',
+          900: '#223a1e',
+        },
+        violet: {
+          50: '#f6f0f6',
+          100: '#eadcec',
+          200: '#d5bad8',
+          300: '#b990be',
+          400: '#9c6ba2',
+          500: '#835088',
+          600: '#6d4071',
+          700: '#59355c',
+          800: '#492d4b',
+        },
+      },
+      // Soft corners, as on a sheet of glass with its edges ground down.
+      borderRadius: {
+        sm: '3px',
+        DEFAULT: '5px',
+        md: '7px',
+        lg: '10px',
+        xl: '14px',
+        '2xl': '18px',
+        '3xl': '26px',
+      },
+      boxShadow: {
+        card: '0 1px 2px 0 rgb(46 42 36 / 0.05), 0 14px 34px -18px rgb(46 42 36 / 0.3)',
+        pop: '0 24px 56px -16px rgb(31 28 23 / 0.38), 0 4px 12px -4px rgb(31 28 23 / 0.12)',
+        // Pressed-key edge on buttons.
+        key: 'inset 0 -2px 0 0 rgb(0 0 0 / 0.22)',
+        'key-light': 'inset 0 -2px 0 0 rgb(31 28 23 / 0.07)',
+      },
+      keyframes: {
+        'fade-in': { from: { opacity: '0' }, to: { opacity: '1' } },
+        'page-in': {
+          from: { opacity: '0', transform: 'translateY(8px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+        'scale-in': {
+          from: { opacity: '0', transform: 'translateY(6px) scale(0.98)' },
+          to: { opacity: '1', transform: 'translateY(0) scale(1)' },
+        },
+        'slide-in-right': { from: { transform: 'translateX(100%)' }, to: { transform: 'translateX(0)' } },
+        'slide-in-left': { from: { transform: 'translateX(-100%)' }, to: { transform: 'translateX(0)' } },
+        'toast-in': {
+          from: { opacity: '0', transform: 'translateY(8px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'fade-in': 'fade-in 150ms ease-out',
+        'page-in': 'page-in 260ms cubic-bezier(0.2, 0.7, 0.2, 1)',
+        'scale-in': 'scale-in 160ms ease-out',
+        'slide-in-right': 'slide-in-right 200ms ease-out',
+        'slide-in-left': 'slide-in-left 200ms ease-out',
+        'toast-in': 'toast-in 180ms ease-out',
+      },
+    },
+  },
+  plugins: [],
+};
